@@ -91,11 +91,12 @@ export default function Footer() {
               <form onSubmit={handleSubscribe} className="flex items-center gap-2">
                 <input
                   type="email"
+                  name="newsletter_email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-2.5 rounded-lg bg-[#1b1713] border border-[#3a3026] text-sm text-[#f6efe6] placeholder:text-[#7e7060] focus:outline-none focus:border-[#f2b441]"
+                  className="flex-1 min-w-0 px-4 py-2.5 rounded-lg bg-[#1b1713] border border-[#3a3026] text-sm text-[#f6efe6] placeholder:text-[#7e7060] focus:outline-none focus:border-[#f2b441]"
                 />
                 <button
                   type="submit"
