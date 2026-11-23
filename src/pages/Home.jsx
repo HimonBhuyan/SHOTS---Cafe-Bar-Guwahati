@@ -78,7 +78,7 @@ export default function Home({ onOpenReserve, onAddToTray, onOpenStory, audioOn 
   return (
     <div className="bg-chalkboard text-[#f6efe6]">
       {/* ================= 1. HERO SECTION (SCROLL PARALLAX) ================= */}
-      <section ref={heroRef} className="relative min-h-[92vh] flex items-center pt-24 pb-20 overflow-hidden">
+      <section ref={heroRef} className="relative min-h-0 lg:min-h-[92vh] flex items-center pt-24 pb-16 sm:pb-20 overflow-hidden">
         <motion.div
           style={{ y: heroBgY, backgroundImage: "url('/images/real/maps-shots-neon-lounge.jpg')" }}
           initial={{ scale: 1.08 }}
@@ -86,8 +86,8 @@ export default function Home({ onOpenReserve, onAddToTray, onOpenStory, audioOn 
           transition={{ duration: 14, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
           className="absolute inset-0 bg-cover bg-center will-change-transform"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#110f0d] via-[#110f0d]/85 to-[#110f0d]/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#110f0d] via-transparent to-[#110f0d]/65" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#110f0d]/80 via-[#110f0d]/65 to-[#110f0d] lg:bg-gradient-to-r lg:from-[#110f0d] lg:via-[#110f0d]/82 lg:to-[#110f0d]/30" />
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-t from-[#110f0d] via-transparent to-[#110f0d]/65" />
 
         {EMBER_PARTICLES.map((p, i) => (
           <motion.span
@@ -113,28 +113,28 @@ export default function Home({ onOpenReserve, onAddToTray, onOpenStory, audioOn 
         ))}
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             <motion.div
               style={{ y: heroCopyY, opacity: heroFade }}
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, ease: 'easeOut' }}
-              className="lg:col-span-7 space-y-6"
+              className="lg:col-span-7 space-y-4 sm:space-y-6"
             >
-              <div className="flex flex-wrap items-center gap-2.5">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1e1913]/90 border border-[#f2b441]/35 text-xs font-medium text-[#f2b441]">
-                  <MapPin className="w-3.5 h-3.5" />
-                  <span>2nd Floor, Nirvana Tower · Opp. City Center Mall</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1e1913]/90 border border-[#f2b441]/35 text-[11px] sm:text-xs font-medium text-[#f2b441]">
+                  <MapPin className="w-3.5 h-3.5 shrink-0" />
+                  <span>2nd Fl, Nirvana Tower · Opp. City Center Mall</span>
                 </div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1a221b]/90 border border-emerald-500/35 text-[11px] font-semibold text-emerald-300">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#1a221b]/90 border border-emerald-500/35 text-[11px] font-semibold text-emerald-300">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span>{isOpenNow ? 'Open Now · Till 11:00 PM' : 'Opens 11:00 AM Daily'}</span>
+                  <span>{isOpenNow ? 'Open Now · Till 11 PM' : 'Opens 11:00 AM Daily'}</span>
                 </div>
               </div>
 
               <div className="relative inline-block">
                 <div className="flex items-start gap-2">
-                  <h1 className="font-script text-5xl sm:text-7xl md:text-[5.25rem] font-bold leading-[0.95] text-[#f6efe6] tracking-tight">
+                  <h1 className="font-script text-[2.95rem] sm:text-7xl md:text-[5.25rem] font-bold leading-[0.95] text-[#f6efe6] tracking-tight">
                     Where Caffeine <br />
                     <span className="text-[#f2b441]">Meets Chaos</span>
                   </h1>
@@ -142,34 +142,34 @@ export default function Home({ onOpenReserve, onAddToTray, onOpenStory, audioOn 
                     animate={{ rotate: [10, 18, 10], y: [0, -4, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                   >
-                    <CrownDoodle className="w-10 h-10 sm:w-12 sm:h-12 -mt-2 shrink-0" />
+                    <CrownDoodle className="w-8 h-8 sm:w-12 sm:h-12 -mt-1 sm:-mt-2 shrink-0" />
                   </motion.div>
                 </div>
-                <HandUnderline className="w-48 sm:w-64 h-4 mt-1" />
+                <HandUnderline className="w-40 sm:w-64 h-3.5 sm:h-4 mt-1" />
               </div>
 
-              <p className="font-hand text-xl sm:text-2xl text-[#e2d4c2] max-w-xl leading-relaxed">
+              <p className="font-hand text-lg sm:text-2xl text-[#e2d4c2] max-w-xl leading-snug sm:leading-relaxed">
                 Your new favourite habit on RG Baruah Road!
               </p>
-              <p className="text-sm sm:text-base text-[#b8aa99] max-w-lg leading-relaxed">
+              <p className="text-xs sm:text-base text-[#c5b7a6] max-w-lg leading-relaxed">
                 A place that lives through every hour of your day — morning espresso &amp; café bites by sunlight,
                 signature shots, cocktails, pool games &amp; live acoustic energy by night.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 sm:pt-2">
                 <Link
                   to="/menu"
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#f2b441] text-[#16120e] font-bold text-sm sm:text-base hover:bg-[#ffd06b] hover:scale-[1.03] active:scale-[0.98] transition shadow-xl shadow-[#f2b441]/25"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#f2b441] text-[#16120e] font-bold text-xs sm:text-base hover:bg-[#ffd06b] hover:scale-[1.03] active:scale-[0.98] transition shadow-xl shadow-[#f2b441]/25"
                 >
                   <span>Explore Menu</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </Link>
 
                 <button
                   onClick={() => onOpenReserve()}
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full border border-[#f6efe6]/55 bg-[#16120e]/70 backdrop-blur-sm text-[#f6efe6] font-semibold text-sm sm:text-base hover:border-[#f2b441] hover:text-[#f2b441] hover:scale-[1.02] transition cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full border border-[#f6efe6]/55 bg-[#16120e]/70 backdrop-blur-sm text-[#f6efe6] font-semibold text-xs sm:text-base hover:border-[#f2b441] hover:text-[#f2b441] hover:scale-[1.02] transition cursor-pointer"
                 >
-                  <Calendar className="w-4 h-4" />
+                  <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   <span>Reserve a Table</span>
                 </button>
               </div>
@@ -179,11 +179,11 @@ export default function Home({ onOpenReserve, onAddToTray, onOpenStory, audioOn 
             <motion.div
               style={{ y: heroNoteY, rotate: heroNoteRotate }}
               initial={{ opacity: 0, rotate: 7, scale: 0.92 }}
-              animate={{ opacity: 1, rotate: 2.5, scale: 1 }}
+              animate={{ opacity: 1, rotate: 2, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.15, type: 'spring', stiffness: 120 }}
-              className="lg:col-span-5 flex justify-start lg:justify-end"
+              className="lg:col-span-5 flex justify-center lg:justify-end pt-2 lg:pt-0 pb-4 lg:pb-0"
             >
-              <div className="relative bg-kraft-note rounded-sm px-7 py-7 w-64 sm:w-72 animate-float-note hover:rotate-0 transition-transform duration-300">
+              <div className="relative bg-kraft-note rounded-sm px-6 py-5 sm:px-7 sm:py-7 w-full max-w-[280px] sm:w-72 animate-float-note hover:rotate-0 transition-transform duration-300">
                 <div className="masking-tape w-20 h-5 absolute -top-2.5 left-1/2 -translate-x-1/2 -rotate-2 rounded-[2px]" />
 
                 <div className="flex items-center justify-between border-b border-[#8c7051]/30 pb-2.5 mb-3">

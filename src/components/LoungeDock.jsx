@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Volume2, VolumeX, Calendar, Phone, MapPin } from 'lucide-react';
 import { VENUE } from '../data/shotsData';
 
 export default function LoungeDock({ audioOn, onToggleAudio, onOpenReserve }) {
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolledPastHero(window.scrollY > 220);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-5 z-40 flex items-center justify-between sm:justify-end gap-2.5 pointer-events-none">
+    <div
+      className={`fixed bottom-4 left-4 right-4 sm:left-auto sm:right-5 z-40 flex items-center justify-between sm:justify-end gap-2.5 pointer-events-none transition-all duration-300 ${
+        scrolledPastHero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 sm:opacity-100 sm:translate-y-0'
+      }`}
+    >
       <button
         onClick={onToggleAudio}
         className={`pointer-events-auto inline-flex items-center gap-2 px-3.5 py-2.5 rounded-full backdrop-blur-md border text-xs font-semibold shadow-xl transition cursor-pointer ${
